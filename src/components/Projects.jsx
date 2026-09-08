@@ -12,9 +12,9 @@ export default function Projects() {
           <h2 className="section-title">
             Featured <span className="text-gradient">Projects</span>
           </h2>
-          <p className="section-subtitle">
+          {/* <p className="section-subtitle">
             Deep dive into flagship production architectures, AI agent systems, and distributed marketing automation.
-          </p>
+          </p> */}
         </div>
 
         <div className="projects-grid">
@@ -23,14 +23,12 @@ export default function Projects() {
               <div className="project-card-header">
                 <div>
                   <span
-                    className={`project-badge-pill ${
-                      project.badgeType === 'ai' ? 'badge-ai' : 'badge-enterprise'
-                    }`}
+                    className={`project-badge-pill ${project.badgeType === 'ai' ? 'badge-ai' : 'badge-enterprise'
+                      }`}
                   >
                     <i
-                      className={`fas ${
-                        project.badgeType === 'ai' ? 'fa-robot' : 'fa-cloud'
-                      }`}
+                      className={`fas ${project.badgeType === 'ai' ? 'fa-robot' : 'fa-cloud'
+                        }`}
                     ></i>{' '}
                     {project.badge}
                   </span>
@@ -104,9 +102,8 @@ export default function Projects() {
                   }}
                 >
                   <i
-                    className={`fas ${
-                      project.isProprietary ? 'fa-bolt' : 'fa-circle-check'
-                    }`}
+                    className={`fas ${project.isProprietary ? 'fa-bolt' : 'fa-circle-check'
+                      }`}
                   ></i>{' '}
                   {project.isProprietary ? 'Multi-Tenant System' : 'Production Ready'}
                 </div>

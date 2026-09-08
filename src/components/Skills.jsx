@@ -28,10 +28,10 @@ export default function Skills() {
           <h2 className="section-title">
             Technical <span className="text-gradient">Toolkit</span>
           </h2>
-          <p className="section-subtitle">
+          {/* <p className="section-subtitle">
             A comprehensive set of modern languages, server frameworks, database systems, 
             and developer tools I use to deliver end-to-end software.
-          </p>
+          </p> */}
         </div>
 
         {/* Filter Navigation */}

@@ -12,10 +12,10 @@ export default function Experience() {
           <h2 className="section-title">
             Professional <span className="text-gradient">Experience</span>
           </h2>
-          <p className="section-subtitle">
+          {/* <p className="section-subtitle">
             Proven commercial experience delivering high-throughput APIs, data-driven report engines, 
             and collaborating with global engineering teams.
-          </p>
+          </p> */}
         </div>
 
         <div className="timeline-container">
