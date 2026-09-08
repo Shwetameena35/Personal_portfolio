@@ -1,12 +1,13 @@
 {
   "name": "shweta-meena-portfolio",
   "private": true,
+  "homepage": "https://shwetameena35.github.io/Personal_portfolio",
   "version": "1.0.0",
   "type": "module",
   "scripts": {
-    "dev": "vite",
-    "build": "vite build",
-    "preview": "vite preview"
+    "start": "react-scripts start",
+    "build": "react-scripts build",
+    "test": "react-scripts test"
   },
   "dependencies": {
     "react": "^18.3.1",
