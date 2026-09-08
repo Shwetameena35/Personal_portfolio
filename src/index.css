@@ -1,0 +1,292 @@
+/* ==========================================================================
+   SHWETA MEENA — SUNSET AMBER & CORAL DESIGN SYSTEM
+   Warm, Creative, High-Energy Modern Gradients with Dark & Light Modes
+   ========================================================================== */
+
+/* --------------------------------------------------------------------------
+   1. Theme Tokens
+   -------------------------------------------------------------------------- */
+:root, [data-theme="dark"] {
+  /* Dark Mode: Deep Twilight / Warm Obsidian */
+  --bg-darkest: #0a0c10;
+  --bg-main: #0f1219;
+  --bg-card: rgba(22, 25, 35, 0.75);
+  --bg-card-hover: rgba(30, 35, 48, 0.9);
+  --bg-glass: rgba(18, 22, 32, 0.72);
+  --bg-glass-elevated: rgba(34, 40, 56, 0.85);
+
+  /* Dark Theme Borders & Glows */
+  --border-subtle: rgba(255, 255, 255, 0.08);
+  --border-hover: rgba(255, 106, 0, 0.45);
+  --border-accent: rgba(244, 63, 94, 0.45);
+
+  /* Text Colors */
+  --text-primary: #fff7ed;
+  --text-secondary: #cbd5e1;
+  --text-muted: #94a3b8;
+  --text-inverse: #0a0c10;
+
+  /* Ambient Mesh & Grid */
+  --grid-line: rgba(255, 255, 255, 0.025);
+  --blob-opacity: 0.26;
+
+  /* Shadows */
+  --card-shadow: 0 12px 32px rgba(0, 0, 0, 0.5);
+  --card-hover-shadow: 0 20px 45px rgba(0, 0, 0, 0.65), 0 0 28px rgba(255, 106, 0, 0.2);
+  --terminal-bg: #0d1117;
+  --terminal-header-bg: #161b24;
+  --navbar-bg-scrolled: rgba(10, 12, 16, 0.9);
+}
+
+[data-theme="light"] {
+  /* Light Mode: Warm Cream / Executive Pearl */
+  --bg-darkest: #fffbf5;
+  --bg-main: #ffffff;
+  --bg-card: rgba(255, 255, 255, 0.92);
+  --bg-card-hover: #ffffff;
+  --bg-glass: rgba(255, 255, 255, 0.8);
+  --bg-glass-elevated: rgba(254, 243, 199, 0.75);
+
+  /* Light Theme Borders */
+  --border-subtle: rgba(217, 119, 6, 0.18);
+  --border-hover: rgba(234, 88, 12, 0.55);
+  --border-accent: rgba(225, 29, 72, 0.5);
+
+  /* Text Colors */
+  --text-primary: #1c1917;
+  --text-secondary: #44403c;
+  --text-muted: #78716c;
+  --text-inverse: #ffffff;
+
+  /* Ambient Mesh & Grid */
+  --grid-line: rgba(217, 119, 6, 0.05);
+  --blob-opacity: 0.14;
+
+  /* Shadows */
+  --card-shadow: 0 10px 25px -4px rgba(120, 53, 15, 0.06), 0 4px 10px -2px rgba(120, 53, 15, 0.04);
+  --card-hover-shadow: 0 20px 35px -5px rgba(234, 88, 12, 0.16), 0 0 0 1px rgba(249, 115, 22, 0.35);
+  --terminal-bg: #18181b;
+  --terminal-header-bg: #27272a;
+  --navbar-bg-scrolled: rgba(255, 251, 245, 0.92);
+}
+
+/* --------------------------------------------------------------------------
+   2. Sunset Amber & Coral Primary Colors & Gradients
+   -------------------------------------------------------------------------- */
+:root {
+  /* Primary Sunset Accents */
+  --sunset-amber: #f59e0b;
+  --sunset-gold: #fbbf24;
+  --sunset-orange: #ff6a00;
+  --sunset-coral: #ff5e62;
+  --sunset-rose: #f43f5e;
+  --sunset-pink: #ec4899;
+  --sunset-purple: #9333ea;
+  --emerald-accent: #10b981;
+
+  /* Gradients */
+  --gradient-primary: linear-gradient(135deg, #ff6a00 0%, #ff5e62 45%, #ec4899 100%);
+  --gradient-accent: linear-gradient(135deg, #f59e0b 0%, #ff6a00 100%);
+  --gradient-coral: linear-gradient(135deg, #ff5e62 0%, #f43f5e 100%);
+  --gradient-amber: linear-gradient(135deg, #fbbf24 0%, #f59e0b 100%);
+  --gradient-dusk: linear-gradient(135deg, #f43f5e 0%, #9333ea 100%);
+  --gradient-emerald: linear-gradient(135deg, #10b981 0%, #059669 100%);
+
+  /* Typography */
+  --font-sans: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  --font-heading: 'Outfit', var(--font-sans);
+  --font-mono: 'JetBrains Mono', 'Fira Code', monospace;
+
+  /* Dimensions */
+  --radius-sm: 8px;
+  --radius-md: 14px;
+  --radius-lg: 20px;
+  --radius-full: 9999px;
+  --nav-height: 76px;
+  --max-width: 1240px;
+
+  /* Transitions */
+  --transition-fast: 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+  --transition-normal: 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  --transition-smooth: 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+/* --------------------------------------------------------------------------
+   3. Global Reset & Base
+   -------------------------------------------------------------------------- */
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: var(--nav-height);
+  font-size: 16px;
+  background-color: var(--bg-darkest);
+  max-width: 100%;
+  overflow-x: hidden;
+}
+
+body {
+  font-family: var(--font-sans);
+  background-color: var(--bg-darkest);
+  color: var(--text-primary);
+  line-height: 1.65;
+  width: 100%;
+  max-width: 100%;
+  overflow-x: hidden;
+  position: relative;
+  min-height: 100vh;
+  transition: background-color 0.35s ease, color 0.35s ease;
+  -webkit-font-smoothing: antialiased;
+}
+
+#root {
+  width: 100%;
+  max-width: 100%;
+  overflow-x: hidden;
+}
+
+/* Ambient Sunset Glow Mesh */
+.ambient-background {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: -1;
+  overflow: hidden;
+}
+
+.ambient-blob {
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(120px);
+  opacity: var(--blob-opacity);
+  animation: floatAmbient 22s infinite alternate ease-in-out;
+  transition: opacity 0.4s ease;
+}
+
+.blob-1 {
+  width: 600px;
+  height: 600px;
+  background: radial-gradient(circle, #ff6a00, #ff5e62);
+  top: -120px;
+  left: -120px;
+}
+
+.blob-2 {
+  width: 650px;
+  height: 650px;
+  background: radial-gradient(circle, #f43f5e, #f59e0b);
+  bottom: 5%;
+  right: -150px;
+  animation-duration: 26s;
+  animation-direction: alternate-reverse;
+}
+
+.blob-3 {
+  width: 420px;
+  height: 420px;
+  background: radial-gradient(circle, #fbbf24, #ec4899);
+  top: 40%;
+  left: 30%;
+  opacity: calc(var(--blob-opacity) * 0.7);
+  animation-duration: 19s;
+}
+
+.ambient-grid {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-image: 
+    linear-gradient(to right, var(--grid-line) 1px, transparent 1px),
+    linear-gradient(to bottom, var(--grid-line) 1px, transparent 1px);
+  background-size: 48px 48px;
+  mask-image: radial-gradient(circle at 50% 50%, black 45%, transparent 90%);
+}
+
+@keyframes floatAmbient {
+  0% { transform: translate(0, 0) scale(1); }
+  50% { transform: translate(50px, 40px) scale(1.08); }
+  100% { transform: translate(-30px, 60px) scale(0.95); }
+}
+
+/* Typography Helpers */
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-heading);
+  color: var(--text-primary);
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  line-height: 1.25;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+  transition: color var(--transition-fast);
+}
+
+ul {
+  list-style: none;
+}
+
+.container {
+  width: 100%;
+  max-width: var(--max-width);
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: 24px;
+  padding-right: 24px;
+}
+
+@media (max-width: 640px) {
+  .container {
+    padding-left: 18px;
+    padding-right: 18px;
+  }
+}
+
+@media (max-width: 380px) {
+  .container {
+    padding-left: 14px;
+    padding-right: 14px;
+  }
+}
+
+/* Sunset Gradients */
+.text-gradient {
+  background: var(--gradient-primary);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  display: inline-block;
+}
+
+.text-gradient-amber {
+  background: var(--gradient-accent);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.text-gradient-coral {
+  background: var(--gradient-coral);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.text-gradient-dusk {
+  background: var(--gradient-dusk);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.font-mono {
+  font-family: var(--font-mono);
+}
