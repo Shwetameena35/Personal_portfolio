@@ -13,7 +13,7 @@ function renderHighlightedCode(rawCode) {
       );
     }
 
-    const tokenRegex = /(\/\/[^\n]*|"[^"]*"|'[^']*'|@[A-Za-z0-9_]+|\b(?:export|class|async|await|return|package|import|type|interface|func|for|range|go|const|readonly|private)\b|\b(?:AiSqlAgent|EventWorker|CandidateEvaluation|Promise|QueryResult|AdEvent|string|int|chan)\b|\b(?:processQuery|synthesize|validate|StartCampaignDispatch|PublishToSocialChannels|evaluateCandidate|Println|queryRawUnsafe)\b|\b\d+(?:\.\d+)?\b|[{}()[\].,;:+\-*/=<>!&|]+|[^\s{}()[\].,;:+\-*/=<>!&|]+|\s+)/g;
+    const tokenRegex = /(\/\/[^\n]*|`[^`]*`|"[^"]*"|'[^']*'|@[A-Za-z0-9_]+|\b(?:export|class|async|await|return|package|import|type|interface|func|for|range|go|const|readonly|private|struct|defer|if|nil)\b|\b(?:AiSqlAgent|EventWorker|CandidateEvaluation|Promise|QueryResult|AdEvent|ExecutionResult|Context|Request|Header|Client|Time|Duration|string|int|float64|error|chan|byte)\b|\b(?:processQuery|synthesize|validate|StartCampaignDispatch|PublishToSocialChannels|evaluateCandidate|ExecuteProxyRequest|Microseconds|Do|Close|Now|Since|Println|queryRawUnsafe)\b|\b\d+(?:\.\d+)?\b|[{}()[\].,;:+\-*/=<>!&|]+|[^\s{}()[\].,;:+\-*/=<>!&|]+|\s+)/g;
 
     const tokens = line.match(tokenRegex) || [line];
 
@@ -27,7 +27,7 @@ function renderHighlightedCode(rawCode) {
               </span>
             );
           }
-          if (token.startsWith('"') || token.startsWith("'")) {
+          if (token.startsWith('"') || token.startsWith("'") || token.startsWith('`')) {
             return (
               <span key={tIdx} style={{ color: '#34d399' }}>
                 {token}
@@ -41,21 +41,21 @@ function renderHighlightedCode(rawCode) {
               </span>
             );
           }
-          if (/^(?:export|class|async|await|return|package|import|type|interface|func|for|range|go|const|readonly|private)$/.test(token)) {
+          if (/^(?:export|class|async|await|return|package|import|type|interface|func|for|range|go|const|readonly|private|struct|defer|if|nil)$/.test(token)) {
             return (
               <span key={tIdx} style={{ color: '#f43f5e', fontWeight: 600 }}>
                 {token}
               </span>
             );
           }
-          if (/^(?:AiSqlAgent|EventWorker|CandidateEvaluation|Promise|QueryResult|AdEvent|string|int|chan)$/.test(token)) {
+          if (/^(?:AiSqlAgent|EventWorker|CandidateEvaluation|Promise|QueryResult|AdEvent|ExecutionResult|Context|Request|Header|Client|Time|Duration|string|int|float64|error|chan|byte)$/.test(token)) {
             return (
               <span key={tIdx} style={{ color: '#38bdf8' }}>
                 {token}
               </span>
             );
           }
-          if (/^(?:processQuery|synthesize|validate|StartCampaignDispatch|PublishToSocialChannels|evaluateCandidate|Println|queryRawUnsafe)$/.test(token)) {
+          if (/^(?:processQuery|synthesize|validate|StartCampaignDispatch|PublishToSocialChannels|evaluateCandidate|ExecuteProxyRequest|Microseconds|Do|Close|Now|Since|Println|queryRawUnsafe)$/.test(token)) {
             return (
               <span key={tIdx} style={{ color: '#fbbf24' }}>
                 {token}

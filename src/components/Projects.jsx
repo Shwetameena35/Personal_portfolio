@@ -23,12 +23,22 @@ export default function Projects() {
               <div className="project-card-header">
                 <div>
                   <span
-                    className={`project-badge-pill ${project.badgeType === 'ai' ? 'badge-ai' : 'badge-enterprise'
-                      }`}
+                    className={`project-badge-pill ${
+                      project.badgeType === 'ai'
+                        ? 'badge-ai'
+                        : project.badgeType === 'go'
+                        ? 'badge-go'
+                        : 'badge-enterprise'
+                    }`}
                   >
                     <i
-                      className={`fas ${project.badgeType === 'ai' ? 'fa-robot' : 'fa-cloud'
-                        }`}
+                      className={`fas ${
+                        project.badgeType === 'ai'
+                          ? 'fa-robot'
+                          : project.badgeType === 'go'
+                          ? 'fa-bolt'
+                          : 'fa-cloud'
+                      }`}
                     ></i>{' '}
                     {project.badge}
                   </span>
@@ -76,9 +86,8 @@ export default function Projects() {
               </div>
 
               <div className="project-card-footer">
-                {/* AI SQL Agent has GitHub button; digiAd.AI has proprietary note */}
-                {project.githubUrl ? (
-                  <div className="project-links">
+                <div className="project-links" style={{ display: 'flex', gap: '0.6rem', flexWrap: 'wrap', alignItems: 'center' }}>
+                  {project.githubUrl && (
                     <a
                       href={project.githubUrl}
                       target="_blank"
@@ -87,12 +96,24 @@ export default function Projects() {
                     >
                       <i className="fab fa-github"></i> View on GitHub
                     </a>
-                  </div>
-                ) : (
-                  <div className="proprietary-notice">
-                    <i className="fas fa-lock"></i> Proprietary &amp; Enterprise Project
-                  </div>
-                )}
+                  )}
+                  {project.liveUrl && (
+                    <a
+                      href={project.liveUrl}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="btn btn-secondary btn-sm"
+                      style={{ borderColor: 'rgba(0, 242, 254, 0.4)' }}
+                    >
+                      <i className="fas fa-arrow-up-right-from-square"></i> Live Demo
+                    </a>
+                  )}
+                  {project.isProprietary && (
+                    <div className="proprietary-notice">
+                      <i className="fas fa-lock"></i> Proprietary &amp; Enterprise Project
+                    </div>
+                  )}
+                </div>
 
                 <div
                   className="font-mono"
@@ -102,8 +123,9 @@ export default function Projects() {
                   }}
                 >
                   <i
-                    className={`fas ${project.isProprietary ? 'fa-bolt' : 'fa-circle-check'
-                      }`}
+                    className={`fas ${
+                      project.isProprietary ? 'fa-bolt' : 'fa-circle-check'
+                    }`}
                   ></i>{' '}
                   {project.isProprietary ? 'Multi-Tenant System' : 'Production Ready'}
                 </div>

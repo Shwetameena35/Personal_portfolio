@@ -868,6 +868,18 @@
   border-color: rgba(234, 88, 12, 0.35);
 }
 
+.badge-go {
+  background: rgba(0, 242, 254, 0.12);
+  color: #00add8;
+  border: 1px solid rgba(0, 173, 216, 0.4);
+}
+
+[data-theme="light"] .badge-go {
+  background: rgba(0, 173, 216, 0.12);
+  color: #0284c7;
+  border-color: rgba(0, 173, 216, 0.4);
+}
+
 .badge-enterprise {
   background: rgba(244, 63, 94, 0.12);
   color: var(--sunset-coral);

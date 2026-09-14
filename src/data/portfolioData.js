@@ -32,7 +32,7 @@ export const STATS = [
   },
   {
     number: "2+",
-    label: "Flagship AI & Microservices Systems",
+    label: "Flagship AI & Distributed Systems",
     icon: "fa-diagram-project",
     gradient: "linear-gradient(135deg, #f43f5e, #ec4899)",
     color: "#f43f5e"
@@ -74,27 +74,41 @@ export class AiSqlAgent {
 }`
   },
   "go-worker": {
-    filename: "dispatcher.go",
-    tabLabel: "dispatcher.go",
-    badge: "GoLang • 50k req/s",
-    code: `// 🚀 High-Throughput Microservice Dispatcher in Go
-package main
+    filename: "synqo_runner.go",
+    tabLabel: "synqo_runner.go",
+    badge: "Go 1.26 • Zero-CORS Proxy",
+    code: `// ⚡ Synqo High-Performance Zero-CORS API Proxy Runner in Go
+package runner
 
-import "fmt"
+import (
+    "net/http"
+    "time"
+    "github.com/gin-gonic/gin"
+)
 
-type EventWorker struct {
-    Engine   string
-    Capacity int
+type ExecutionResult struct {
+    StatusCode int           \`json:"status_code"\`
+    DurationMs float64       \`json:"duration_ms"\`
+    Headers    http.Header   \`json:"headers"\`
+    Body       []byte        \`json:"body"\`
 }
 
-func (w *EventWorker) StartCampaignDispatch(queue <-chan AdEvent) {
-    fmt.Println("⚡ Consuming RabbitMQ events across Meta, Google & Snap APIs")
-    for event := range queue {
-        go func(e AdEvent) {
-            // Non-blocking concurrent microservice execution
-            e.PublishToSocialChannels()
-        }(event)
+func ExecuteProxyRequest(c *gin.Context, targetReq *http.Request) (*ExecutionResult, error) {
+    client := &http.Client{Timeout: 30 * time.Second}
+    start := time.Now()
+
+    resp, err := client.Do(targetReq)
+    if err != nil {
+        return nil, err
     }
+    defer resp.Body.Close()
+
+    duration := float64(time.Since(start).Microseconds()) / 1000.0
+    return &ExecutionResult{
+        StatusCode: resp.StatusCode,
+        DurationMs: duration,
+        Headers:    resp.Header,
+    }, nil
 }`
   },
   "hire-me": {
@@ -200,6 +214,41 @@ export const SKILLS_DATA = [
 
 export const PROJECTS_DATA = [
   {
+    id: "synqo",
+    title: "Synqo — All-in-One API Development Platform",
+    badge: "GO & REACT 19 • HIGH-PERFORMANCE",
+    badgeType: "go",
+    timeline: "01/2026 – Present",
+    pipeline: [
+      "React 19 + TS UI",
+      "Go Gin Gateway",
+      "Zero-CORS Cloud Proxy",
+      "Dynamic Mock Engine",
+      "Gorilla WebSockets"
+    ],
+    highlights: [
+      "Architected an all-in-one API development platform unifying Postman-style request execution, dynamic mock servers with latency simulation, OpenAPI docs, multi-language SDK generator (Go, TS, Python, Java), and real-time telemetry.",
+      "Engineered a dual-mode test runner with zero-CORS Go cloud proxy and browser-direct execution featuring millisecond latency timers, visual assertions, and inline dynamic variable inspection with secret masking.",
+      "Implemented dynamic mock endpoints with WebSocket-driven live traffic streaming, role-based collaboration (Editor/Viewer), and live telemetry monitoring (P50/P95/P99 latency percentiles & throughput charts)."
+    ],
+    stack: [
+      "Go (Golang)",
+      "Gin",
+      "Gorilla WebSocket",
+      "React 19",
+      "TypeScript",
+      "Tailwind CSS",
+      "Vite",
+      "GORM",
+      "PostgreSQL",
+      "Docker",
+      "Render"
+    ],
+    githubUrl: "https://github.com/Shwetameena35/Synqo",
+    liveUrl: "https://synqo-frontend.onrender.com/index.html",
+    isProprietary: false
+  },
+  {
     id: "ai-sql-agent",
     title: "AI SQL Agent",
     badge: "AI / LLM & FULL-STACK",
@@ -230,37 +279,6 @@ export const PROJECTS_DATA = [
     ],
     githubUrl: "https://github.com/Shwetameena35/sql-agent",
     isProprietary: false
-  },
-  {
-    id: "digiad-ai",
-    title: "digiAd.AI",
-    badge: "MICROSERVICES & ENTERPRISE",
-    badgeType: "enterprise",
-    timeline: "03/2025 – 08/2026",
-    pipeline: [
-      "Ad Campaign Service",
-      "RabbitMQ Queue",
-      "Meta & Google APIs",
-      "AWS S3 Media Vault"
-    ],
-    highlights: [
-      "Built a subscription-based digital marketing platform enabling businesses to create, manage, and automate AI-generated advertising campaigns across Google, Snapchat, Meta, and Twitter.",
-      "Implemented API integrations to publish Instagram and Facebook Reels and send promotional messages via SMS and WhatsApp, using AI to auto-generate ad creatives, captions, and marketing content.",
-      "Used AWS S3 to upload, store, and retrieve campaign files and media data, supporting reliable, scalable file handling across the distributed platform."
-    ],
-    stack: [
-      "NestJS",
-      "Next.js",
-      "Microservices",
-      "RabbitMQ",
-      "PostgreSQL",
-      "TypeORM",
-      "AWS S3",
-      "REST APIs",
-      "JWT Auth"
-    ],
-    githubUrl: null, // As requested: NO github link for digiad.ai
-    isProprietary: true
   }
 ];
 
